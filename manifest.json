@@ -1,0 +1,19 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "Tour Guide",
+  "short_name": "MAD5",
+  "scope": "/MAD5/index.html",
+  "display": "browser",
+  "start_url": "https://ibr4h1m.github.io/MAD5/index.html",
+  "background_color": "#000000",
+  "theme_color": "transparent",
+  "description": "",
+  "orientation": "any",
+  "related_applications": [],
+  "prefer_related_applications": "false",
+  "icons": [],
+  "url": "https://ibr4h1m.github.io/MAD5/index.html",
+  "generated": true,
+  "screenshots": []
+}

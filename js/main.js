@@ -1,3 +1,7 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('<add-path-here>/pwabuilder-sw.js');
+  });
 // Initialize and add the map
 function initMap() {
   // The location of Uluru
