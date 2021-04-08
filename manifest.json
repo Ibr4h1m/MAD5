@@ -1,14 +1,11 @@
 {
-	"short_name": "1K4",
-	"name": "1K4Home",
-	"lang": "en",
-	"description": "PWA Assignment",
-	"start_url": "/",
-	"background_color": "#00aae7",
-	"theme_color": "#00aae7",
-	"dir": "ltr",
-	"display": "standalone",
-	"orientation": "any",
+    "name": "1K4Home",
+    "short_name": "1K4",
+    "start_url": ".",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#ccc",
+    "theme_color": "#5FAAE5",
 	"icons": [
 		{
 			"src": "icon/android-icon-192x192-dunplab-manifest-41407.png",
@@ -75,6 +72,5 @@
 			"type": "image/png",
 			"sizes": "16x16"
 		}
-	],
-	"prefer_related_applications": false
+	]
 }

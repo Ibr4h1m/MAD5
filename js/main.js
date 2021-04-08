@@ -1,3 +1,10 @@
+if ('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js')
+        .then(function(){
+            console.log("SW Registered")
+    });
+}
+
 // Initialize and add the map
 function initMap() {
   // The location of Uluru
