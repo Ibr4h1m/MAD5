@@ -1,19 +1,8 @@
 
 //check whether browser support service workers
-if ('serviceWorker' in navigator) {
-    //wait until page loaded to avoid delaying rendering
-    window.addEventListener('load', function() {
-        //register service worker
-        navigator.serviceWorker.register('sw.js').then(
-            function(registration) {
-                console.log('Service worker registration successful', 
-                             registration);
-            }, 
-            function(err) {
-                console.log('Service worker registration failed', err);
-        });
-    });
-}
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+};
 
 
 
