@@ -1,5 +1,6 @@
-const cacheName = 'tourguide-site';
-const appShellFiles =  ['index.html',
+const cacheName = 'v1';
+const cacheAssets =  [
+    'index.html',
     'help.html',
     'destinations.html',
     'contact.html',
@@ -9,32 +10,45 @@ const appShellFiles =  ['index.html',
 ];
 
 
-self.addEventListener('install', (e) => {
-  console.log('[Service Worker] Install');
-  e.waitUntil((async () => {
-    const cache = await caches.open(cacheName);
-    console.log('[Service Worker] Caching all: app shell and content');
-    await cache.addAll(appShellFiles);
-  })());
+// Call Install Event
+self.addEventListener('install', e => {
+  console.log('Service Worker: Installed');
 });
 
-
-// Simple Activate since the other one is BS
-
-self.addEventListener('activate', function () {
-  console.log('SW Activated');
+// Call Activate Event
+self.addEventListener('activate', e => {
+  console.log('Service Worker: Activated');
+  // Remove unwanted caches
+  e.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== cacheName) {
+            console.log('Service Worker: Clearing Old Cache');
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
 });
 
-self.addEventListener('fetch', (e) => {
-  e.respondWith((async () => {
-    const r = await caches.match(e.request);
-    console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
-    if (r) { return r; }
-    const response = await fetch(e.request);
-    const cache = await caches.open(cacheName);
-    console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-    cache.put(e.request, response.clone());
-    return response;
-  })());
+// Call Fetch Event
+self.addEventListener('fetch', e => {
+  console.log('Service Worker: Fetching');
+  e.respondWith(
+    fetch(e.request)
+      .then(res => {
+        // Make copy/clone of response
+        const resClone = res.clone();
+        // Open cahce
+        caches.open(cacheName).then(cache => {
+          // Add response to cache
+          cache.put(e.request, resClone);
+        });
+        return res;
+      })
+      .catch(err => caches.match(e.request).then(res => res))
+  );
 });
 
