@@ -19,6 +19,7 @@ self.addEventListener('install', (e) => {
 });
 
 
+// Simple Activate since the other one is BS
 
 self.addEventListener('activate', function () {
   console.log('SW Activated');

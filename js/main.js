@@ -1,5 +1,5 @@
 
-//check whether browser support service workers
+//Simple ServiceWorker
 if('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 };
