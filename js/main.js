@@ -7,42 +7,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-let orn = getOrientation();
-let out = document.getElementById('output');
-out.textContent = orn;
-            
-function getOrientation() {
-    let _orn = screen.msOrientation ||
-    (screen.orientation || screen.mozOrientation).type;
-
-    switch(_orn){
-        case 'portrait-primary':
-        case 'portrait-secondary':
-
-            break;
-        case 'landscape-primary':
-            console.log('This is the laptop/desktop version')
-            break;
-        case 'landscape-secondary':
-            break;
-        case undefined:
-            //not supported
-            break;
-        default:
-            //something unknown
-    }
-    return _orn;
-}
-
-window.addEventListener('orientationchange', (ev)=>{
-    orn = getOrientation();
-    out.textContent = orn;
-    console.dir(ev)
-})
-
-
-
-
 // Initialize and add the map
 function initMap() {
     // The location of Uluru
