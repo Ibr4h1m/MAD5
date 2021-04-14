@@ -3,8 +3,7 @@
     "short_name": "1K4",
     "start_url": ".",
     "display": "standalone",
-    "orientation": "portrait",
-    "orientation": "landscape",
+    "orientation": "any",
     "background_color": "#ccc",
     "theme_color": "#5FAAE5",
 	"icons": [
